@@ -22,6 +22,12 @@
             height: 100vh;
         }
 
+        .question-container {
+            background-color: #ccc; /* Color de fondo gris */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
         .question {
             margin-top: 20px;
         }
@@ -34,32 +40,37 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            display: none; /* Botón inicialmente oculto */
         }
     </style>
 </head>
 <body>
-    <script>
-        // Textos a mostrar y preguntas
-        const texts = [
-            "Veo que has despertado, te preguntarás que haces atado.",
-            "No te asustes, estas aquí por una razón por la cual te apuntaste, aprender informatica",
-            "Te iré mostrando preguntas las cuales tendrás que responder para continuar en el centro, en caso de que no sea así, recibirás una penitencia."
-        ];
+    <div class="question-container">
+        <script>
+            // Textos a mostrar y preguntas
+            const texts = [
+                "Veo que has despertado, te preguntarás que haces atado.",
+                "No te asustes, estas aquí por una razón por la cual te apuntaste, aprender informatica",
+                "Te iré mostrando preguntas las cuales tendrás que responder para continuar en el centro, en caso de que no sea así, recibirás una penitencia."
+            ];
 
-        // Función para cambiar el texto del cuerpo
-        function changeText(index) {
-            document.body.innerHTML = texts[index];
-            setTimeout(() => {
+            // Función para cambiar el texto del cuerpo
+            function changeText(index) {
+                document.querySelector('.question-container').innerHTML = texts[index];
                 if (index < texts.length - 1) {
-                    changeText(index + 1);
+                    setTimeout(() => changeText(index + 1), 9000); // Cambia el texto cada 9 segundos
                 } else {
-                    showQuestion();
+                    setTimeout(() => {
+                        document.querySelector('button').style.display = 'block'; // Mostrar botón después del último texto
+                    }, 9000);
                 }
-            }, 10000); // Cambia el texto cada 10 segundos
-        }
+            }
 
-        // Iniciar el proceso de cambio de texto
-        changeText(0);
-    </script>
+            // Iniciar el proceso de cambio de texto
+            changeText(0);
+        </script>
+    </div>
+    <br><br>
+    <button onclick="window.location.href = 'preguntas.php';">Ir a Preguntas</button>
 </body>
 </html>
