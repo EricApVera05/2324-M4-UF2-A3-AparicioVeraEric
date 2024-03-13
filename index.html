@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pantalla de inicio</title>
-<link rel="stylesheet" type="text/css" href="estilos/styles.css">
+<title>Inicio</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        
+    }
+    .container {
+        height: 100%;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .boton {
+        background-color: black;
+        color: black;
+        padding: 0px;
+        border: none;
+        font-size: 0px;
+        cursor: pointer;
+        width: 1000px;
+        height: 1000px;
+    }
+</style>
 </head>
 <body>
-
-<div id="overlay"></div>
-
-<?php
-header("refresh:5; url=inicio.php");
-?>
-
+<div class="container">
+    <form action="advertencia.php" method="get">
+        <button type="submit" class="boton"> </button>
+    </form>
+</div>
 </body>
 </html>

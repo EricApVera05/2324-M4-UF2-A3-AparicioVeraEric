@@ -8,14 +8,7 @@ body {
     align-items: center;
     height: 100vh;
 }
-
-#overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('ruta/a/tu/imagen.jpg');
-    background-size: cover;
-    background-position: center;
+#contenido img {
+    max-width: 100%;
+    max-height: 100%;
 }

@@ -7,7 +7,7 @@
             background-color: black;
             color: white;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Aseguramos que los elementos estén en columna */
             align-items: center;
             height: 100vh;
             margin: 0;
@@ -17,6 +17,8 @@
 
         .text-container {
             overflow: hidden;
+            margin-bottom: 20px; /* Añadido para separar el texto del botón */
+            margin-top:  220px; /* Para ajustarlo al final de la página */
         }
 
         .line {
@@ -44,12 +46,17 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            display: none;
-            margin-top: 20px; /* Añadido para separar el botón del texto */
         }
 
-        .visible {
-            display: block !important; /* Usamos !important para asegurarnos de que este estilo prevalezca */
+        /* Añadido para ocultar el botón inicialmente */
+        #boton.hidden {
+            display: none;
+        }
+
+        /* Añadido para mostrar el botón después de la animación */
+        #boton.visible {
+            display: block;
+            margin-top: 20px; /* Añadido para separar el botón del texto */
         }
     </style>
 </head>
@@ -63,25 +70,20 @@
         <span class="line">El primer día de clases llegó, te encuentras frente al imponente edificio del instituto. Con el corazón latiendo con fuerza, entras decidido por la puerta principal.</span>
         <span class="line">Justo en el momento en que pasabas el umbral, la puerta se cerró de golpe tras de ti, haciendo eco en el silencio del vestíbulo.</span>
     </div>
+    <button id="boton" class="hidden">Comenzar</button>
 
-    <?php 
-    // PHP para mostrar el botón al finalizar todas las animaciones
-    if (!empty($_GET['animation_finished'])) {
-        echo '<button id="boton" href="pregunta.php" class="visible">Empezar</button>';
-    }
-    ?>
     <script>
-        // JavaScript para mostrar el botón al finalizar todas las animaciones
-        const spans = document.querySelectorAll('.line');
+        const textContainer = document.querySelector('.text-container');
+        const boton = document.getElementById('boton');
 
-        let animationCount = 0;
-        spans.forEach((span, index) => {
-            span.addEventListener('animationend', () => {
-                animationCount++;
-                if (animationCount === spans.length) {
-                    document.getElementById('boton').classList.add('visible');
-                }
-            });
+        textContainer.addEventListener('animationend', () => {
+            boton.classList.add('visible');
+            boton.classList.remove('hidden');
+        });
+        
+        
+        boton.addEventListener('click', () => {
+            window.location.href = 'pregunta.php';
         });
     </script>
 </body>

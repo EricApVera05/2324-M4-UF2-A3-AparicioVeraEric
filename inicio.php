@@ -25,6 +25,6 @@
 	</style>
 </head>
 <body>
-	<button id="boton" onclick="location.href='lore.php'">INICIO</button>
+	<button id="boton" onclick="location.href='lore.php'">INICIAR</button>
 </body>
 </html>
