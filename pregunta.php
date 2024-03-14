@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pre-preguntas</title>
     <style>
         body {
             background-image: url('./img/imagen1.jpg');
@@ -42,35 +42,55 @@
             cursor: pointer;
             display: none; /* Botón inicialmente oculto */
         }
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh; /* Ajusta la altura de las filas como desees */
+            width: 100%;
+        }
+
+        .content {
+            text-align: center;
+            color: #fff; /* Color del texto */
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-    <div class="question-container">
-        <script>
-            // Textos a mostrar y preguntas
-            const texts = [
-                "Veo que has despertado, te preguntarás que haces atado.",
-                "No te asustes, estas aquí por una razón por la cual te apuntaste, aprender informatica",
-                "Te iré mostrando preguntas las cuales tendrás que responder para continuar en el centro, en caso de que no sea así, recibirás una penitencia."
-            ];
+    <div class="row">
+        <div class="content">
+            <div class="question-container">
+                <script>
+                    // Textos a mostrar y preguntas
+                    const texts = [
+                        "Veo que has despertado, te preguntarás que haces atado.",
+                        "No te asustes, estas aquí por una razón por la cual te apuntaste, aprender informatica",
+                        "Te iré mostrando preguntas las cuales tendrás que responder para continuar en el centro, en caso de que no sea así, recibirás una penitencia."
+                    ];
 
-            // Función para cambiar el texto del cuerpo
-            function changeText(index) {
-                document.querySelector('.question-container').innerHTML = texts[index];
-                if (index < texts.length - 1) {
-                    setTimeout(() => changeText(index + 1), 9000); // Cambia el texto cada 9 segundos
-                } else {
-                    setTimeout(() => {
-                        document.querySelector('button').style.display = 'block'; // Mostrar botón después del último texto
-                    }, 9000);
-                }
-            }
-
-            // Iniciar el proceso de cambio de texto
-            changeText(0);
-        </script>
+                    // Función para cambiar el texto del cuerpo
+                    function changeText(index) {
+                        document.querySelector('.question-container').innerHTML = texts[index];
+                        if (index < texts.length - 1) {
+                            setTimeout(() => changeText(index + 1), 8000); // Cambia el texto cada 9 segundos
+                        } else {
+                            setTimeout(() => {
+                                document.querySelector('button').style.display = 'block'; // Mostrar botón después del último texto
+                            }, 5000);
+                        }
+                    }
+                    // Iniciar el proceso de cambio de texto
+                    changeText(0);
+                </script>
+            </div>
+        </div>
     </div>
-    <br><br>
-    <button onclick="window.location.href = 'preguntas.php';">Ir a Preguntas</button>
+    <div class="row">
+        <div class="content">
+            <div class="column-1">
+            <button onclick="window.location.href = 'preguntas.php';">Ir a Preguntas</button>
+        </div>
+    </div>
 </body>
 </html>

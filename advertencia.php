@@ -36,6 +36,14 @@
     </style>
 </head>
 <body>
+    <?php
+        // Verifica si hay una referencia en la solicitud HTTP
+        if (!isset($_SERVER['HTTP_REFERER'])) {
+            // Si no hay referencia, redirige al usuario a index.html
+            header("Location: index.html");
+            exit; // Termina el script para evitar que se ejecute más código
+        }
+    ?>
     <img src="img/advertencia.jpg">
     <button id="boton" onclick="location.href='inicio.php'">INICIAR</button>
 </body>

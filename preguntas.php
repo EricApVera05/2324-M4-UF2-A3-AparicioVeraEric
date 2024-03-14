@@ -5,16 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preguntas</title>
     <style>
-        .ayuda-imagen {
-            max-width: 50px; /* Ancho máximo de la imagen */
-            position: fixed; /* Posición fija */
-            bottom: 20px; /* 20px desde el borde inferior */
-            left: 20px; /* 20px desde el borde izquierdo */
-            cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            <?php
+    session_start(); // Inicia la sesión
+
+    // Verifica si hay una referencia en la solicitud HTTP
+    if (!isset($_SERVER['HTTP_REFERER'])) {
+        // Si no hay referencia, redirige al usuario a index.html
+        header("Location: index.html");
+        exit; // Termina el script para evitar que se ejecute más código
+    }
+    $preguntas_acertadas = isset($_SESSION['preguntas_acertadas']) ? $_SESSION['preguntas_acertadas'] : 0; // Recupera el valor de preguntas acertadas de la sesión o inicialízalo a 0
+    // Cambiar la imagen de fondo basada en el número de preguntas acertadas
+    $imagen_fondo = "./img/imagen1.jpg"; // Imagen de fondo predeterminada
+    if (isset($_POST['submit'])) {
+
+        // Lógica para contar preguntas acertadas
+        $preguntas_acertadas = 0; // Inicializar el contador
+        // Si la respuesta es correcta, incrementa el contador
+        if ($_POST['respuesta'] == $_POST['respuesta_correcta']) {
+            $preguntas_acertadas++;
         }
+        // Cambiar la imagen de fondo en función del número de preguntas acertadas
+        switch ($preguntas_acertadas) {
+            case 1:
+                $imagen_fondo = "./img/imagen2.jpg";
+                break;
+            case 2:
+                $imagen_fondo = "./img/imagen3.jpg";
+                break;
+            case 3:
+                $imagen_fondo = "./img/imagen4.jpg";
+                break;
+            case 4:
+                $imagen_fondo = "./img/imagen5.jpg";
+                break;
+            case 5:
+                $imagen_fondo = "./img/imagen6.jpg";
+                break;
+            case 6:
+                $imagen_fondo = "./img/imagen7.jpg";
+                break;
+            case 7:
+                // Redirigir a fin.php si se han respondido correctamente más de 6 preguntas
+                header('Location: fin.php');
+                exit; // Importante para evitar que el script siga ejecutándose
+                break;
+        }
+    }
+    echo "background-image: url('$imagen_fondo');";
+    ?> 
+
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+            #preguntas-container {
+                background-color: rgba(128, 128, 128, 0.8); /* Fondo gris semi-transparente */
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .ayuda-imagen {
+                max-width: 50px;
+                cursor: pointer;
+            }
     </style>
 </head>
 <body>
+<div id="preguntas-container">
     <?php
     // Array de preguntas y respuestas
     $preguntas = array(
@@ -134,6 +198,7 @@
         }
         echo "<input type='hidden' name='respuesta_correcta' value='{$pregunta['respuesta_correcta']}'>";
         echo "<input type='hidden' name='indice_imagen' value='$indiceImagen'>"; // Agregamos el índice de la imagen oculta
+        echo "<input type='hidden' name='ayuda' value='{$pregunta['ayuda']}'>"; // Agregamos el número de ayuda
         echo "<input type='submit' name='submit' value='Responder'>";
         echo "</form>";
 
@@ -145,31 +210,27 @@
     if (isset($_POST['submit'])) {
         $respuesta = $_POST['respuesta'];
         $respuesta_correcta = $_POST['respuesta_correcta'];
-        $indiceImagen = $_POST['indice_imagen']; // Recuperamos el índice de la imagen
-
         if ($respuesta == $respuesta_correcta) {
             echo "<p>¡Respuesta correcta!</p>";
-
-            // Cambia la imagen (aquí puedes implementar tu lógica específica)
-            $indiceImagen = ($indiceImagen + 1) % 3; // Por ejemplo, si tienes 3 imágenes, esto cambiará al índice siguiente circularmente
         } else {
-            echo "<p>Respuesta incorrecta. Inténtalo de nuevo.</p>";
+            // Respuesta incorrecta, redirigir a otra página
+            header('Location: error.php');
+            exit; // ¡Importante para evitar que el script siga ejecutándose!
         }
     }
 
     // Muestra la pregunta con el índice de la imagen actual
     mostrarPregunta($preguntas, $indiceImagen);
     ?>
+    </div>
 
-    <!-- Script para mostrar la imagen en pantalla grande -->
     <script>
-        function mostrarAyuda() {
-            var ayudaDiv = document.getElementById('ayuda');
-            var ayuda = '<?php echo $ayuda[$_POST["ayuda"]]; ?>'; // Recuperamos el texto de ayuda correspondiente al número de la pregunta
-            ayudaDiv.innerHTML = "<p>" + ayuda + "</p>";
-            ayudaDiv.style.display = 'block';
-        }
-    </script>
+    function mostrarAyuda(numeroAyuda) {
+        var ayuda = <?php echo json_encode($ayuda); ?>;
+        alert(ayuda[numeroAyuda]); // Muestra la ayuda correspondiente al número proporcionado
+    }
+</script>
+
 </body>
 </html>
 
