@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>Pre-preguntas</title>
     <style>
         body {
@@ -20,6 +22,7 @@
             align-items: center;
             text-align: center;
             height: 100vh;
+			flex-direction: column;
         }
 
         .question-container {
@@ -31,66 +34,57 @@
         .question {
             margin-top: 20px;
         }
-
         button {
             margin-top: 20px;
             padding: 10px 20px;
-            background-color: white;
-            color: black;
+            font-size: 16px;
             border: none;
             border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
             cursor: pointer;
             display: none; /* Botón inicialmente oculto */
         }
-        .row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50vh; /* Ajusta la altura de las filas como desees */
-            width: 100%;
-        }
-
-        .content {
-            text-align: center;
-            color: #fff; /* Color del texto */
-            width: 100%;
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="row">
-        <div class="content">
-            <div class="question-container">
-                <script>
-                    // Textos a mostrar y preguntas
-                    const texts = [
-                        "Veo que has despertado, te preguntarás que haces atado.",
-                        "No te asustes, estas aquí por una razón por la cual te apuntaste, aprender informatica",
-                        "Te iré mostrando preguntas las cuales tendrás que responder para continuar en el centro, en caso de que no sea así, recibirás una penitencia."
-                    ];
+    <?php
+        // Verifica si hay una referencia en la solicitud HTTP
+        if (!isset($_SERVER['HTTP_REFERER'])) {
+            // Si no hay referencia, redirige al usuario a index.html
+            header("Location: index.html");
+            exit; // Termina el script para evitar que se ejecute más código
+        }
+    ?>
+    <div class="question-container">
+        <script>
+            // Textos a mostrar y preguntas
+            const texts = [
+                "Veo que has despertado, te preguntarás que haces atado.",
+                "No te asustes, estas aquí por una razón por la cual te apuntaste, aprender informatica",
+                "Te iré mostrando preguntas las cuales tendrás que responder para continuar en el centro, en caso de que no sea así, recibirás una penitencia."
+            ];
 
-                    // Función para cambiar el texto del cuerpo
-                    function changeText(index) {
-                        document.querySelector('.question-container').innerHTML = texts[index];
-                        if (index < texts.length - 1) {
-                            setTimeout(() => changeText(index + 1), 8000); // Cambia el texto cada 9 segundos
-                        } else {
-                            setTimeout(() => {
-                                document.querySelector('button').style.display = 'block'; // Mostrar botón después del último texto
-                            }, 5000);
-                        }
-                    }
-                    // Iniciar el proceso de cambio de texto
-                    changeText(0);
-                </script>
-            </div>
-        </div>
+            // Función para cambiar el texto del cuerpo
+            function changeText(index) {
+                document.querySelector('.question-container').innerHTML = texts[index];
+                if (index < texts.length - 1) {
+                    setTimeout(() => changeText(index + 1), 8000); // Cambia el texto cada 9 segundos
+                } else {
+                    setTimeout(() => {
+                        document.querySelector('button').style.display = 'block'; // Mostrar botón después del último texto
+                    }, 5000);
+                }
+            }
+            // Iniciar el proceso de cambio de texto
+            changeText(0);
+        </script>
     </div>
-    <div class="row">
-        <div class="content">
-            <div class="column-1">
-            <button onclick="window.location.href = 'preguntas.php';">Ir a Preguntas</button>
-        </div>
+    <div>
+        <button onclick="window.location.href = 'preguntas.php';">Ir a Preguntas</button>
     </div>
 </body>
 </html>

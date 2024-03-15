@@ -27,7 +27,7 @@
         font-size: 0px;
         cursor: pointer;
         width: 1000px;
-        height: 1000px;
+        height: 700px;
     }
 </style>
 </head>
@@ -36,6 +36,33 @@
     <form action="advertencia.php" method="get">
         <button type="submit" class="boton"> </button>
     </form>
+    <audio id="audio" loop>
+        <source src="img/ambience_sound.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var audio = document.getElementById('audio');
+        var isPlaying = localStorage.getItem('audioIsPlaying');
+      
+        if (isPlaying === 'true') {
+          audio.play();
+        }
+      
+        document.addEventListener('visibilitychange', function() {
+          if (document.visibilityState === 'hidden') {
+            if (!audio.paused) {
+              localStorage.setItem('audioIsPlaying', 'true');
+              audio.pause();
+            }
+          } else {
+            if (localStorage.getItem('audioIsPlaying') === 'true') {
+              audio.play();
+            }
+          }
+        });
+      });
+    </script>
 </div>
 </body>
 </html>

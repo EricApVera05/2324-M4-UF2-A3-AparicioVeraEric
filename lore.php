@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Lore</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         body{
             background-color: black;
@@ -72,6 +73,14 @@
     </div>
     <button id="boton" class="hidden">Comenzar</button>
 
+    <?php
+        // Verifica si hay una referencia en la solicitud HTTP
+        if (!isset($_SERVER['HTTP_REFERER'])) {
+            // Si no hay referencia, redirige al usuario a index.html
+            header("Location: index.html");
+            exit; // Termina el script para evitar que se ejecute más código
+        }
+    ?>
     <script>
         const textContainer = document.querySelector('.text-container');
         const boton = document.getElementById('boton');
