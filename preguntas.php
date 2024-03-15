@@ -1,3 +1,60 @@
+<?php
+session_start(); // Inicia la sesión
+
+// Verifica si hay una referencia en la solicitud HTTP
+if (!isset($_SERVER['HTTP_REFERER'])) {
+    // Si no hay referencia, redirige al usuario a index.html
+    header("Location: index.html");
+    exit; // Termina el script para evitar que se ejecute más código
+}
+
+// Establece el número de preguntas acertadas o inicialízalo a 0
+$preguntas_acertadas = isset($_SESSION['preguntas_acertadas']) ? $_SESSION['preguntas_acertadas'] : 0;
+
+// Define la imagen de fondo predeterminada
+$imagen_fondo = "./img/imagen1.jpg";
+
+// Si se envió el formulario
+if (isset($_POST['submit'])) {
+    // Si la respuesta es correcta, incrementa el contador
+    if ($_POST['respuesta'] == $_POST['respuesta_correcta']) {
+        $preguntas_acertadas++;
+    }
+
+    // Cambia la imagen de fondo en función del número de preguntas acertadas
+    switch ($preguntas_acertadas) {
+        case 0:
+            $imagen_fondo = "./img/imagen1.jpg";
+            break;
+        case 1:
+            $imagen_fondo = "./img/imagen2.jpg";
+            break;
+        case 2:
+            $imagen_fondo = "./img/imagen3.jpg";
+            break;
+        case 3:
+            $imagen_fondo = "./img/imagen4.jpg";
+            break;
+        case 4:
+            $imagen_fondo = "./img/imagen5.jpg";
+            break;
+        case 5:
+            $imagen_fondo = "./img/imagen6.jpg";
+            break;
+        case 6:
+            $imagen_fondo = "./img/imagen7.jpg";
+            break;
+        case 7:
+            // Redirige a fin.php si se han respondido correctamente más de 6 preguntas
+            header('Location: fin.php');
+            exit; // Importante para evitar que el script siga ejecutándose
+            break;
+    }
+
+    // Actualiza el número de preguntas acertadas en la sesión
+    $_SESSION['preguntas_acertadas'] = $preguntas_acertadas;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,67 +71,10 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            <?php
-            $preguntas_acertadas = 0;
-
-    session_start(); // Inicia la sesión
-
-    // Verifica si hay una referencia en la solicitud HTTP
-    if (!isset($_SERVER['HTTP_REFERER'])) {
-        // Si no hay referencia, redirige al usuario a index.html
-        header("Location: index.html");
-        exit; // Termina el script para evitar que se ejecute más código
-    }
-            // Establece el número de preguntas acertadas o inicialízalo a 0
-            $preguntas_acertadas = isset($_SESSION['preguntas_acertadas']) ? $_SESSION['preguntas_acertadas'] : 0;
-
-            // Define la imagen de fondo predeterminada
-            $imagen_fondo = "./img/imagen1.jpg";
-
-            // Si se envió el formulario
-            if (isset($_POST['submit'])) {
-                // Inicializa el contador de preguntas acertadas
-          
-                // Si la respuesta es correcta, incrementa el contador
-                if ($_POST['respuesta'] == $_POST['respuesta_correcta']) {
-                    $preguntas_acertadas++;
-                  
-                }
-
-                // Cambia la imagen de fondo en función del número de preguntas acertadas
-                switch ($preguntas_acertadas) {
-                    case 1:
-                        $imagen_fondo = "./img/imagen2.jpg";
-                        break;
-                    case 2:
-                        $imagen_fondo = "./img/imagen3.jpg";
-                        break;
-                    case 3:
-                        $imagen_fondo = "./img/imagen4.jpg";
-                        break;
-                    case 4:
-                        $imagen_fondo = "./img/imagen5.jpg";
-                        break;
-                    case 5:
-                        $imagen_fondo = "./img/imagen6.jpg";
-                        break;
-                    case 6:
-                        $imagen_fondo = "./img/imagen7.jpg";
-                        break;
-                    case 7:
-                        // Redirige a fin.php si se han respondido correctamente más de 6 preguntas
-                        header('Location: fin.php');
-                        exit; // Importante para evitar que el script siga ejecutándose
-                        break;
-                }
-            }
-            // Imprime el estilo con la imagen de fondo dinámica
-            echo "background-image: url('$imagen_fondo');";
-            ?>
-
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
+            background-image: url('<?php echo $imagen_fondo; ?>');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
             }
             #preguntas-container {
                 background-color: rgba(128, 128, 128, 0.8); /* Fondo gris semi-transparente */
