@@ -61,42 +61,16 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="estilos/style.css">
     <title>Preguntas</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
             background-image: url('<?php echo $imagen_fondo; ?>');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
             }
-            #preguntas-container {
-                background-color: rgba(128, 128, 128, 0.8); /* Fondo gris semi-transparente */
-                padding: 20px;
-                border-radius: 10px;
-            }
-            .ayuda-imagen {
-                max-width: 50px;
-                cursor: pointer;
-            }
-            #ayuda-imagen-fullscreen {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 9999;
-            }
+            
     </style>
 </head>
-<body>
+<body class="bodypreguntas">
 <div id="preguntas-container">
     <?php
     // Array de preguntas y respuestas
@@ -184,8 +158,105 @@ if (isset($_POST['submit'])) {
             "respuestas" => array("Una técnica de pesca", "Un software para crear gráficos en 3D", "Un intento de engañar a las personas para que revelen información personal", "Un término de programación"),
             "respuesta_correcta" => 2,
             "ayuda" => 13
+        ),
+        array(
+            "pregunta" => "¿Qué es un IDE?",
+            "respuestas" => array("Integrated Design Environment", "Integrated Development Environment", "Integrated Deployment Environment", "Integrated Documentation Environment"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 14
+        ),
+        array(
+            "pregunta" => "¿Qué es un bug en el contexto de la programación?",
+            "respuestas" => array("Un insecto que se cuela en el ordenador", "Un error en el código que provoca un comportamiento no deseado", "Un proceso de depuración de código", "Un término coloquial para referirse a un programador novato"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 15
+        ),
+        array(
+            "pregunta" => "¿Qué es un algoritmo de búsqueda binaria?",
+            "respuestas" => array("Un algoritmo para encontrar el doble de resultados en una búsqueda", "Un algoritmo que divide repetidamente una lista en dos partes iguales para encontrar un elemento", "Un algoritmo que busca en todas las posiciones posibles de una lista", "Un algoritmo que usa solo dos operadores aritméticos para realizar una búsqueda"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 16
+        ),
+        array(
+            "pregunta" => "¿Cuál es la diferencia entre un compilador y un intérprete?",
+            "respuestas" => array("Un compilador es más rápido que un intérprete", "Un compilador traduce el código fuente a código máquina antes de su ejecución, mientras que un intérprete lo traduce línea por línea durante la ejecución", "Un intérprete es más usado en sistemas embebidos", "Un compilador es solo para lenguajes compilados mientras que un intérprete es para lenguajes interpretados"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 17
+        ),
+        array(
+            "pregunta" => "¿Qué significa la sigla API?",
+            "respuestas" => array("Application Program Interface", "Application Programming Interface", "Application Process Interface", "Application Programmed Interface"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 18
+        ),
+        array(
+            "pregunta" => "¿Qué es un bucle en programación?",
+            "respuestas" => array("Un error que hace que el programa quede atrapado en una sección infinita de código", "Una estructura que permite repetir un conjunto de instrucciones varias veces", "Una característica que permite al programador controlar el flujo de ejecución del programa", "Una función que permite dividir el código en secciones más pequeñas y manejables"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 19
+        ),
+        array(
+            "pregunta" => "¿Qué es una API REST?",
+            "respuestas" => array("Una técnica de construcción de interfaces de usuario", "Una arquitectura para construir servicios web basados en el protocolo REST", "Un lenguaje de programación orientado a objetos", "Una API que solo funciona con el método POST"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 20
+        ),
+        array(
+            "pregunta" => "¿Qué es un script en programación?",
+            "respuestas" => array("Un tipo de fuente para una obra de teatro", "Un conjunto de instrucciones que se ejecutan en un ordenador", "Un programa para la creación de guiones de cine", "Un lenguaje de programación avanzado"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 21
+        ),
+        array(
+            "pregunta" => "¿Qué es un argumento en programación?",
+            "respuestas" => array("Una pelea entre dos programadores", "Una variable dentro de una función", "Un valor que se pasa a una función cuando se la llama", "Una característica de los lenguajes de programación orientados a objetos"),
+            "respuesta_correcta" => 2,
+            "ayuda" => 22
+        ),
+        array(
+            "pregunta" => "¿Qué es la recursividad en programación?",
+            "respuestas" => array("Un tipo de error en el código", "Un método de depuración de código", "Una técnica que consiste en llamar a una función desde sí misma", "Un tipo de lenguaje de programación"),
+            "respuesta_correcta" => 2,
+            "ayuda" => 23
+        ),
+        array(
+            "pregunta" => "¿Qué significa el término 'debugging'?",
+            "respuestas" => array("El proceso de añadir errores a un programa", "La fase final de desarrollo de un software", "El proceso de depurar y corregir errores en un programa", "Una técnica de programación avanzada"),
+            "respuesta_correcta" => 2,
+            "ayuda" => 24
+        ),
+        array(
+            "pregunta" => "¿Qué es una variable en programación?",
+            "respuestas" => array("Una constante que no puede cambiar su valor", "Una palabra clave reservada en un lenguaje de programación", "Un espacio de memoria que almacena datos y puede cambiar su valor", "Una función especial que devuelve un valor específico"),
+            "respuesta_correcta" => 2,
+            "ayuda" => 25
+        ),
+        array(
+            "pregunta" => "¿Qué es un array en programación?",
+            "respuestas" => array("Un conjunto de instrucciones para ejecutar un programa", "Un tipo de estructura de datos que almacena colecciones de elementos", "Una función que devuelve múltiples valores", "Una técnica de optimización de código"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 26
+        ),
+        array(
+            "pregunta" => "¿Qué es un método en programación orientada a objetos?",
+            "respuestas" => array("Una técnica de resolución de problemas en programación", "Una función que pertenece a una clase y puede ser invocada en los objetos de esa clase", "Un algoritmo avanzado de búsqueda", "Un tipo de estructura de control de flujo"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 27
+        ),
+        array(
+            "pregunta" => "¿Qué es un constructor en programación orientada a objetos?",
+            "respuestas" => array("Una persona que construye programas", "Una función especial de una clase que se llama automáticamente cuando se crea un objeto de esa clase", "Una técnica de optimización de código", "Una estructura de control de flujo"),
+            "respuesta_correcta" => 1,
+            "ayuda" => 28
+        ),
+        array(
+            "pregunta" => "¿Qué es una excepción en programación?",
+            "respuestas" => array("Un error grave en el código que provoca un fallo del sistema", "Un tipo especial de variable", "Una función que devuelve un resultado inesperado", "Un error que ocurre durante la ejecución de un programa y rompe el flujo normal de ejecución"),
+            "respuesta_correcta" => 3,
+            "ayuda" => 29
         )
     );
+    
     $ayuda = array(
         "HTML es el lenguaje de marcado estándar para la creación de páginas web.",
         "CSS es un lenguaje usado para describir la presentación de un documento escrito en HTML.",
@@ -200,7 +271,23 @@ if (isset($_POST['submit'])) {
         "PHP es un lenguaje de programación diseñado para el desarrollo web del lado del servidor.",
         "HTTP es un protocolo de comunicación usado para transferir datos en la World Wide Web.",
         "Un sistema operativo es un software que gestiona los recursos de hardware y proporciona servicios a los programas de aplicación.",
-        "Phishing es una técnica utilizada para obtener información confidencial, como contraseñas y detalles de tarjetas de crédito, haciéndose pasar por una entidad confiable en una comunicación electrónica."
+        "Phishing es una técnica utilizada para obtener información confidencial, como contraseñas y detalles de tarjetas de crédito, haciéndose pasar por una entidad confiable en una comunicación electrónica.",
+        "Un IDE es un entorno de desarrollo integrado que proporciona herramientas para facilitar la programación.",
+        "Un bug en programación es un error en el código que provoca un comportamiento no deseado.",
+        "La búsqueda binaria es un algoritmo de búsqueda eficiente que divide repetidamente una lista en dos partes iguales.",
+        "Un compilador traduce el código fuente a código máquina antes de su ejecución, mientras que un intérprete lo traduce línea por línea durante la ejecución.",
+        "Una API (Interfaz de Programación de Aplicaciones) es un conjunto de reglas y protocolos que permiten a diferentes aplicaciones comunicarse entre sí.",
+        "Un bucle en programación es una estructura que permite repetir un conjunto de instrucciones varias veces.",
+        "Una API REST es una arquitectura para construir servicios web basados en el protocolo REST que utiliza métodos estándar HTTP.",
+        "Un script en programación es un conjunto de instrucciones que se ejecutan en un ordenador.",
+        "En programación, un argumento es un valor que se pasa a una función cuando se la llama.",
+        "La recursividad en programación es una técnica que consiste en llamar a una función desde sí misma.",
+        "El debugging es el proceso de depurar y corregir errores en un programa durante el desarrollo.",
+        "En programación, una variable es un espacio de memoria que almacena datos y puede cambiar su valor durante la ejecución del programa.",
+        "En programación, un array es una estructura de datos que almacena colecciones de elementos del mismo tipo.",
+        "En programación orientada a objetos, un método es una función que pertenece a una clase y puede ser invocada en los objetos de esa clase.",
+        "En programación orientada a objetos, un constructor es una función especial de una clase que se llama automáticamente cuando se crea un objeto de esa clase.",
+        "En programación, una excepción es un error que ocurre durante la ejecución de un programa y rompe el flujo normal de ejecución."
     );
     // Inicializa el índice de la imagen actual
     $indiceImagen = 0;
@@ -249,7 +336,7 @@ if (isset($_POST['submit'])) {
 
     <!-- Audio para reproducir cuando se pide ayuda -->
     <audio id="audio-ayuda" loop style="display: none;">
-        <source src="tu_audio.mp3" type="audio/mp3">
+        <source src="./img/Jumpscare.mp3" type="audio/mp3">
         Tu navegador no soporta el elemento de audio.
     </audio>
 

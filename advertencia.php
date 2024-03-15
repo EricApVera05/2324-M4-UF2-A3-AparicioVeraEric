@@ -6,37 +6,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Inicio</title>
     <link href="./estilos/style.css" rel='stylesheet' type='text/css'/>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-        .container {
-            height: 100%;
-            background-color: black;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        img {
-            display: inline-block;
-            max-width: 100%;
-            height: auto;
-        }
-        #boton {
-            display: inline-block;
-            background-color: black;
-            color: white;
-            padding: 15px 20px;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./estilos/style.css">
 </head>
-<body>
+<body class="bodyadv">
     <?php
         // Verifica si hay una referencia en la solicitud HTTP
         if (!isset($_SERVER['HTTP_REFERER'])) {
@@ -45,7 +17,6 @@
             exit; // Termina el script para evitar que se ejecute más código
         }
     ?>
-    <img src="img/advertencia.jpg">
-    <button id="boton" onclick="location.href='inicio.php'">INICIAR</button>
+    <button id="botonadv" onclick="location.href='inicio.php'">INICIAR</button>
 </body>
 </html>

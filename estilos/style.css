@@ -1,14 +1,265 @@
-body {
+.bodyindex {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    height: 100%;
+}
+.containerindex {
+    height: 100%;
     background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+.botonindex {
+    background-color: black;
+    color: black;
+    padding: 0px;
+    border: none;
+    font-size: 0px;
+    cursor: pointer;
+    width: 1000px;
+    height: 700px;
+}
+.bodyinicio {
+    background-image: url('./../img/Imagenintro.jpg');
+    background-position:center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    font-family: 'Candara', sans-serif;
+    text-align: center;
+}
+#boton {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#h1inicio {
+    font-size: 5em; /* Tamaño del texto grande */
+    text-align: center;
+}
+.buttoninicio {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+.buttoninicio:hover {
+    background-color: #45a049;
+}
+.bodylore {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column; /* Aseguramos que los elementos estén en columna */
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: monospace;
+    font-size: 1.1em;
+}
+
+.text-container {
+    overflow: hidden;
+    margin-bottom: 20px; /* Añadido para separar el texto del botón */
+    margin-top:  220px; /* Para ajustarlo al final de la página */
+}
+
+.line {
+    display: block;
+    white-space: nowrap;
+    border-right: 4px solid;
+    width: 0;
+    overflow: hidden;
+    animation: typing 4s steps(35) forwards, blink .5s infinite step-end alternate;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+#botonlore {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Añadido para ocultar el botón inicialmente */
+#botonlore.hidden {
+    display: none;
+}
+
+/* Añadido para mostrar el botón después de la animación */
+#botonlore.visible {
+    display: block;
+    margin-top: 20px; /* Añadido para separar el botón del texto */
+}
+.bodypregunta {
+    background-image: url('./../img/imagen1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
+    background-attachment: fixed; 
+    margin: 0; 
+    padding: 0; 
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.question-container {
+    background-color: #ccc; /* Color de fondo gris */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.question {
+    margin-top: 20px;
+}
+.buttonpregunta {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    display: none; /* Botón inicialmente oculto */
+}
+.buttonpregunta:hover {
+    background-color: #45a049;
+}
+.bodyfin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.h1fin {
+    font-size: 5em; /* Tamaño del texto grande */
+    text-align: center;
+    margin-top: 200px;
+}
+#audio {
+    display: none; /* Para ocultar el reproductor de audio */
+}
+.buttonfin {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+.buttonfin:hover {
+    background-color: #45a049;
+}
+.bodyerror {
+    background-image: url('./../img/pasillo.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    text-align: center;
+    color: white;
+}
+.bodyadv {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('./../img/advertencia.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgadv {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+#botonadv {
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 15px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 40%
+}
+.bodypreguntas {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
-#contenido img {
-    max-width: 100%;
-    max-height: 100%;
+#preguntas-container {
+    background-color: rgba(128, 128, 128, 0.8); /* Fondo gris semi-transparente */
+    padding: 20px;
+    border-radius: 10px;
+}
+.ayuda-imagen {
+    max-width: 50px;
+    cursor: pointer;
+}
+#ayuda-imagen-fullscreen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
 }

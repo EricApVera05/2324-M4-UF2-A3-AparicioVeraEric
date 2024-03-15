@@ -4,53 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="./estilos/style.css">
     <title>Pre-preguntas</title>
-    <style>
-        body {
-            background-image: url('./img/imagen1.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center; 
-            background-attachment: fixed; 
-            margin: 0; 
-            padding: 0; 
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: 100vh;
-			flex-direction: column;
-        }
-
-        .question-container {
-            background-color: #ccc; /* Color de fondo gris */
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .question {
-            margin-top: 20px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            display: none; /* Botón inicialmente oculto */
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
-<body>
+<body class="bodypregunta">
     <?php
         // Verifica si hay una referencia en la solicitud HTTP
         if (!isset($_SERVER['HTTP_REFERER'])) {
@@ -84,7 +41,7 @@
         </script>
     </div>
     <div>
-        <button onclick="window.location.href = 'preguntas.php';">Ir a Preguntas</button>
+        <button class="buttonpregunta" onclick="window.location.href = 'preguntas.php';">Ir a Preguntas</button>
     </div>
 </body>
 </html>
